@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 25% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 220 25% 10%;
+    --muted: 220 14% 95%;
+    --muted-foreground: 220 10% 46%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem;
+
+    --gain: 152 69% 41%;
+    --gain-foreground: 0 0% 100%;
+    --loss: 0 72% 51%;
+    --loss-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 217 91% 60%;
+
+    --chart-green: 152 69% 41%;
+    --chart-red: 0 72% 51%;
+    --chart-blue: 217 91% 60%;
+    --chart-yellow: 38 92% 50%;
+    --chart-purple: 271 76% 53%;
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 220 14% 80%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 16%;
+    --sidebar-accent-foreground: 220 14% 90%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  .dark {
+    --background: 220 25% 6%;
+    --foreground: 220 14% 92%;
+    --card: 220 25% 10%;
+    --card-foreground: 220 14% 92%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 220 14% 92%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 220 14% 92%;
+    --muted: 220 20% 14%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 220 20% 16%;
+    --accent-foreground: 220 14% 92%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 217 91% 60%;
+
+    --gain: 152 69% 45%;
+    --loss: 0 72% 55%;
+    --warning: 38 92% 55%;
+
+    --sidebar-background: 220 30% 5%;
+    --sidebar-foreground: 220 14% 75%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 25% 12%;
+    --sidebar-accent-foreground: 220 14% 90%;
+    --sidebar-border: 220 25% 12%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-gain {
+    color: hsl(var(--gain));
+  }
+  .text-loss {
+    color: hsl(var(--loss));
+  }
+  .text-warning {
+    color: hsl(var(--warning));
+  }
+  .bg-gain {
+    background-color: hsl(var(--gain));
+  }
+  .bg-loss {
+    background-color: hsl(var(--loss));
+  }
+  .bg-warning {
+    background-color: hsl(var(--warning));
+  }
+  .bg-gain\/10 {
+    background-color: hsl(var(--gain) / 0.1);
+  }
+  .bg-loss\/10 {
+    background-color: hsl(var(--loss) / 0.1);
+  }
+  .bg-warning\/10 {
+    background-color: hsl(var(--warning) / 0.1);
+  }
+  .glass-card {
+    @apply backdrop-blur-xl border border-border/50;
+    background: hsl(var(--card) / 0.8);
+  }
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(271 76% 53%));
+  }
+  .pulse-dot {
+    @apply relative;
+  }
+  .pulse-dot::before {
+    content: '';
+    @apply absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full;
+    background: hsl(var(--gain));
+    animation: pulse-ring 2s ease-out infinite;
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 hsl(var(--gain) / 0.5); }
+    100% { box-shadow: 0 0 0 8px hsl(var(--gain) / 0); }
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+}
