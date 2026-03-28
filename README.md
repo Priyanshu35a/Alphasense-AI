@@ -33,7 +33,7 @@ A modern React application built with Vite, TypeScript, and ShadCN UI components
    npm run dev
    ```
 
-   The application will be available at `http://localhost:5173`
+   The application will be available at `http://localhost:8080`
 
 ## Available Scripts
 
